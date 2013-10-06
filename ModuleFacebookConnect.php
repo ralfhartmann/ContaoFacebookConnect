@@ -148,7 +148,7 @@ class ModuleFacebookConnect extends Module
 							case 'email':
 								if ($fb_me['email']) // Prevent issue with NULL
 								{
-									$arrData['email'] = $fb_me['email']; /* j.smith@example.com */
+									$arrData['fb_email'] = $fb_me['email']; /* j.smith@example.com */
 								}
 								break;
 							case 'user_website':
@@ -200,10 +200,10 @@ class ModuleFacebookConnect extends Module
 				if ($this->Input->get('code'))
 				{
 					// Check if member already exists (but maybe without Facebook ID)
-					if ($arrData['email'])
+					if ($arrData['fb_email'])
 					{
 						$objMemberInit = $this->Database->prepare("SELECT id,username,fb_user_id FROM tl_member WHERE fb_user_id=? OR email=?")
-														->execute($fb_user_id, $arrData['email']);
+														->execute($fb_user_id, $arrData['fb_email']);
 					}
 					else
 					{
@@ -214,6 +214,8 @@ class ModuleFacebookConnect extends Module
 					// Create a new user if the Facebook member isn't in the database
 					if ($objMemberInit->numRows == 0)
 					{
+						// Use email from Facebook as user email
+						$arrData['email'] = $arrData['fb_email'];
 						$objNewUser = $this->Database->prepare("INSERT INTO tl_member %s")
 													 ->set($arrData)
 													 ->execute();

@@ -26,7 +26,8 @@ CREATE TABLE `tl_page` (
 --
 
 CREATE TABLE `tl_member` (
-  `fb_user_id` varchar(255) NOT NULL default ''
+  `fb_user_id` varchar(255) NOT NULL default '',
+  `fb_email` varchar(255) NOT NULL default ''
 ) ENGINE=MyISAM default CHARSET=utf8;
 
 
