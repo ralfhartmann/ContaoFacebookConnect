@@ -2,9 +2,9 @@
 
 /**
  * Contao Open Source CMS
- * 
+ *
  * Copyright (C) 2005-2013 Leo Feyer
- * 
+ *
  * @package   FacebookConnect
  * @author    Mark Sturm
  * @author    Richard Henkenjohann
@@ -61,5 +61,5 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['fb_additionalPermissions'] = array
 	'exclude'		=> true,
 	'options'		=> array('email','user_website','user_birthday','user_location'),
 	'reference'		=> $GLOBALS['TL_LANG']['tl_module']['fb_additionalPermissions']['fields'],
-	'eval'			=> array('multiple'=>true),
+	'eval'			=> array('multiple'=>true, 'tl_class'=>'clr'),
 );
